@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: apna-blog-agent
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: AUTO_PUBLISH
+        value: "true"
+      - key: AGENT_RUN_INTERVAL_HOURS
+        value: "6"
